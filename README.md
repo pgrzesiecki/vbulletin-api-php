@@ -2,6 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/signes/vbulletin-api-php/v/stable)](https://packagist.org/packages/signes/vbulletin-api-php)
 [![Build Status](https://travis-ci.org/signes-pl/vbulletin-api-php.svg?branch=master)](https://travis-ci.org/signes-pl/vbulletin-api-php)
+[![Circle CI](https://circleci.com/gh/signes-pl/vbulletin-api-php.svg?style=svg)](https://circleci.com/gh/signes-pl/vbulletin-api-php)
 [![License](https://poser.pugx.org/signes/acl/license)](https://packagist.org/packages/signes/vbulletin-api-php)
 
 ## What is this?
@@ -35,7 +36,8 @@ This package gives you possibility to easy integrate your system with vBulletin 
 | Client version | Your client version. |
 | Platform name | Your platform name. |
 | Platform version | Your platform version. |
-    
+
+
     ```php
     use Signes\vBApi\ApiConfig;
     $apiConfig = new ApiConfig($apiKey, $uniqueId, $clientName, $clientVersion, $platformName, $platformVersion);
