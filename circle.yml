@@ -1,0 +1,7 @@
+machine:
+  php:
+    version: 5.5.9
+
+dependencies:
+  pre:
+    - composer require guzzlehttp/guzzle:^6.2.0

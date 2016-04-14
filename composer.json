@@ -1,6 +1,6 @@
 {
   "name": "signes/vbulletin-api-php",
-  "description": "Advanced ACL for Laravel",
+  "description": "This package gives you possibility to easy integrate your system with vBulletin 5 API using simple methods calls.",
   "keywords": [
     "vbulletin",
     "api"
@@ -15,8 +15,7 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "beberlei/assert": "^2.5.0",
-    "guzzlehttp/guzzle": "6.2.0"
+    "beberlei/assert": "^2.5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8.23",

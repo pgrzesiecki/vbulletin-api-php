@@ -1,5 +1,9 @@
 # vBulletin 5 API connector
 
+[![Latest Stable Version](https://poser.pugx.org/signes/vbulletin-api-php/v/stable)](https://packagist.org/packages/signes/vbulletin-api-php)
+[![Build Status](https://travis-ci.org/signes-pl/vbulletin-api-php.svg?branch=master)](https://travis-ci.org/signes-pl/vbulletin-api-php)
+[![License](https://poser.pugx.org/signes/acl/license)](https://packagist.org/packages/signes/vbulletin-api-php)
+
 ## What is this?
 
 This package gives you possibility to easy integrate your system with vBulletin 5 API using simple methods calls.
@@ -23,14 +27,14 @@ This package gives you possibility to easy integrate your system with vBulletin 
 
 1. First of all create your API configuration file which should include information's like:
 
-    | Param | Description|
-    | -- | -- |
-    | vBulletin API key | You can find it in vBulletin control panel, under API section. |
-    | Unique ID | Unique id is used to identity your client and platform name, it can be any unique string. Be careful, if you will change unique ID your request will be recognized as request from new API client and new API client ID will be returned. |
-    | Client name | Your client name. |
-    | Client version | Your client version. |
-    | Platform name | Your platform name. |
-    | Platform version | Your platform version. |
+| Param | Description|
+|---|---|
+| vBulletin API key | You can find it in vBulletin control panel, under API section. |
+| Unique ID | Unique id is used to identity your client and platform name, it can be any unique string. Be careful, if you will change unique ID your request will be recognized as request from new API client and new API client ID will be returned. |
+| Client name | Your client name. |
+| Client version | Your client version. |
+| Platform name | Your platform name. |
+| Platform version | Your platform version. |
     
     ```php
     use Signes\vBApi\ApiConfig;
