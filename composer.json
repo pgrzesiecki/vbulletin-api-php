@@ -1,0 +1,41 @@
+{
+  "name": "signes/vbulletin-api-php",
+  "description": "Advanced ACL for Laravel",
+  "keywords": [
+    "vbulletin",
+    "api"
+  ],
+  "homepage": "https://github.com/signes-pl/vbulletin-api-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pawel Grzesiecki",
+      "email": "pawel.grzesiecki@signes.pl"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "beberlei/assert": "^2.5.0",
+    "guzzlehttp/guzzle": "6.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8.23",
+    "squizlabs/php_codesniffer": "^2.5.1",
+    "phpmd/phpmd": "^2.3.2",
+    "mockery/mockery": "^0.9.4"
+  },
+  "suggest": {
+    "guzzlehttp/guzzle": "Allows you to use Guzzle as connector provider."
+  },
+  "autoload": {
+    "psr-4": {
+      "Signes\\vBApi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Signes\\vBApi\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable"
+}
