@@ -2,6 +2,7 @@
 
 namespace Signes\vBApi\Connector\Provider;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Signes\vBApi\Connector\ConnectorInterface;
@@ -42,14 +43,15 @@ class GuzzleProvider implements ConnectorInterface
     public function __construct($apiUrl, $debug = false)
     {
         $this->apiUrl = $apiUrl;
-        $this->debug = (bool) $debug;
-        $this->initGuzzle();
+        $this->debug = (bool)$debug;
+
+        $this->initGuzzleClientInstance();
     }
 
     /**
      * Initialize Guzzle connection
      */
-    protected function initGuzzle()
+    protected function initGuzzleClientInstance()
     {
         $this->setGuzzleClient(new Client(['base_uri' => $this->apiUrl]));
     }
@@ -61,6 +63,7 @@ class GuzzleProvider implements ConnectorInterface
     public function setGuzzleClient(Client $guzzleClient)
     {
         $this->guzzleClient = $guzzleClient;
+
         return $this;
     }
 
@@ -76,14 +79,16 @@ class GuzzleProvider implements ConnectorInterface
                 'api.php',
                 [
                     'query' => $params,
-                    'debug' => $this->debug
+                    'debug' => $this->debug,
                 ]
             );
-            $result = (array) json_decode($response->getBody());
+            $result = (array)json_decode($response->getBody());
 
             return $result;
         } catch (ClientException $e) {
             throw new VBApiException("Can not send GET request. {$e->getMessage()}", $e->getCode(), $e);
+        } catch (Exception $e) {
+            throw new VBApiException("Unexpected exception occurred. {$e->getMessage()}", $e->getCode(), $e);
         }
     }
 
@@ -99,14 +104,16 @@ class GuzzleProvider implements ConnectorInterface
                 'api.php',
                 [
                     'form_params' => $params,
-                    'debug'       => $this->debug
+                    'debug'       => $this->debug,
                 ]
             );
-            $result = (array) json_decode($response->getBody());
+            $result = (array)json_decode($response->getBody());
 
             return $result;
         } catch (ClientException $e) {
             throw new VBApiException("Can not send POST request. {$e->getMessage()}", $e->getCode(), $e);
+        } catch (Exception $e) {
+            throw new VBApiException("Unexpected exception occurred. {$e->getMessage()}", $e->getCode(), $e);
         }
     }
 }
