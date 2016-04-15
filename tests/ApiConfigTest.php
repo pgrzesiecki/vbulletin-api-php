@@ -6,7 +6,7 @@ namespace Signes\vBApi;
  * Class ApiConfigTest
  *
  * @package            Signes\vBApi
- * @coversDefaultClass \Signes\vBApi\ApiConfig
+ * @coversDefaultClass Signes\vBApi\ApiConfig
  */
 class ApiConfigTest extends TestCase
 {

@@ -12,7 +12,7 @@ use Signes\vBApi\Exception\VBApiException;
  * Class ApiTest
  *
  * @package            Signes\vBApi
- * @coversDefaultClass \Signes\vBApi\vBApi
+ * @coversDefaultClass Signes\vBApi\Api
  */
 class ApiTest extends TestCase
 {
