@@ -28,46 +28,46 @@ This package gives you possibility to easy integrate your system with vBulletin 
 
 1. First of all create your API configuration file which should include information's like:
 
-| Param | Description|
-|---|---|
-| vBulletin API key | You can find it in vBulletin control panel, under API section. |
-| Unique ID | Unique id is used to identity your client and platform name, it can be any unique string. Be careful, if you will change unique ID your request will be recognized as request from new API client and new API client ID will be returned. |
-| Client name | Your client name. |
-| Client version | Your client version. |
-| Platform name | Your platform name. |
-| Platform version | Your platform version. |
-
-
+    | Param | Description|
+    |---|---|
+    | vBulletin API key | You can find it in vBulletin control panel, under API section. |
+    | Unique ID | Unique id is used to identity your client and platform name, it can be any unique string. Be careful, if you will change unique ID your request will be recognized as request from new API client and new API client ID will be returned. |
+    | Client name | Your client name. |
+    | Client version | Your client version. |
+    | Platform name | Your platform name. |
+    | Platform version | Your platform version. |
+    
+    
     ```php
     use Signes\vBApi\ApiConfig;
     $apiConfig = new ApiConfig($apiKey, $uniqueId, $clientName, $clientVersion, $platformName, $platformVersion);
     ```
 
 2. When configuration object is ready, next step is to initiate connection provider. This provider is responsible for communication between your application and vB forum.
-
+    
     By default you can use included **Guzzle** provider but before you will do this, you should require **guzzlehttp/guzzle** package in composer. Guzzle provider required forum URL in constructor with trailing slash. 
-   
+       
     ```php
     use Signes\vBApi\Connector\Provider\GuzzleProvider;
     $apiConnector = new GuzzleProvider('http://example.com/my-forum/');
     ```
-    
+        
     If this is not good enough, you can provide own connection class, just implement `Signes\vBApi\Connector\ConnectorInterface` interface.
-    
+        
 3. After that you are ready to prepare API service, which required `Signes\vBApi\ApiConfig` and `Signes\vBApi\Connector\ConnectorInterface` objects.
-
+    
     ```php
     use Signes\vBApi\Api;
     $api = new Api($apiConfig, $apiConnector);
     ```
-    
+        
 4. When API service is initialized, you can call any API request.
-
+    
     ```php
     $response = $api->callRequest('user.fetchByEmail', ['email' => 'test@example.com']);
     $response = $api->callRequest('site.getSiteStatistics', []);
     ```
-    
+        
 ## API service
 
 What do API service for you:
