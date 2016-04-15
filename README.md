@@ -3,6 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/signes/vbulletin-api-php/v/stable)](https://packagist.org/packages/signes/vbulletin-api-php)
 [![Build Status](https://travis-ci.org/signes-pl/vbulletin-api-php.svg?branch=master)](https://travis-ci.org/signes-pl/vbulletin-api-php)
 [![Circle CI](https://circleci.com/gh/signes-pl/vbulletin-api-php.svg?style=svg)](https://circleci.com/gh/signes-pl/vbulletin-api-php)
+[![codecov.io](https://codecov.io/github/signes-pl/vbulletin-api-php/coverage.svg?branch=master)](https://codecov.io/github/signes-pl/vbulletin-api-php?branch=master)
 [![License](https://poser.pugx.org/signes/acl/license)](https://packagist.org/packages/signes/vbulletin-api-php)
 
 ## What is this?

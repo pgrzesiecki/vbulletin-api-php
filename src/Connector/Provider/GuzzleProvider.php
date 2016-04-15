@@ -43,7 +43,7 @@ class GuzzleProvider implements ConnectorInterface
     public function __construct($apiUrl, $debug = false)
     {
         $this->apiUrl = $apiUrl;
-        $this->debug = (bool)$debug;
+        $this->debug = (bool) $debug;
 
         $this->initGuzzleClientInstance();
     }
@@ -82,7 +82,7 @@ class GuzzleProvider implements ConnectorInterface
                     'debug' => $this->debug,
                 ]
             );
-            $result = (array)json_decode($response->getBody());
+            $result = (array) json_decode($response->getBody());
 
             return $result;
         } catch (ClientException $e) {
@@ -107,7 +107,7 @@ class GuzzleProvider implements ConnectorInterface
                     'debug'       => $this->debug,
                 ]
             );
-            $result = (array)json_decode($response->getBody());
+            $result = (array) json_decode($response->getBody());
 
             return $result;
         } catch (ClientException $e) {

@@ -96,6 +96,36 @@ class ApiTest extends TestCase
     }
 
     /**
+     * @covers ::__construct
+     * @throws VBApiException
+     */
+    public function testInstanceWithLazyLoadingOff()
+    {
+        $connector = $this->getConnectorMock();
+        $connector->shouldReceive('sendGetRequest')->with(
+            [
+                'api_sig' => '4af2857b305fceed8eb222c53f866cf3',
+                'api_c'   => 'clientId',
+                'api_s'   => 'accessToken',
+                'api_v'   => 'apiVersion',
+                'api_m'   => 'api.init',
+            ]
+        )->once()->andReturn([]);
+
+        $configuration = $this->getConfigurationMock();
+        $configuration->shouldReceive('getInitRequestParams')->once()->andReturn([]);
+        $configuration->shouldReceive('getAccessToken')->times(3)->andReturn('accessToken');
+        $configuration->shouldReceive('getSecret')->twice()->andReturn('secret');
+        $configuration->shouldReceive('getClientId')->twice()->andReturn('clientId');
+        $configuration->shouldReceive('getApiKey')->once()->andReturn('apiKey');
+        $configuration->shouldReceive('getApiVersion')->once()->andReturn('apiVersion');
+        $configuration->shouldReceive('setAccessDataFromApiResponse')->once();
+
+        new Api($configuration, $connector, false);
+    }
+
+
+    /**
      * @covers ::getApiSignatureForParams
      * @dataProvider dataApiAuthParams
      * @param string $accessToken
