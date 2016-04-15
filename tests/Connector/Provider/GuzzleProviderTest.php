@@ -14,7 +14,7 @@ use Signes\vBApi\TestCase;
  * Class GuzzleProvider.
  *
  * @package            Signes\vBApi\Connector\Provider
- * @coversDefaultClass Signes\vBApi\Connector\Provider\GuzzleProvider
+ * @coversDefaultClass \Signes\vBApi\Connector\Provider\GuzzleProvider
  */
 class GuzzleProviderTest extends TestCase
 {
