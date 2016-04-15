@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Mockery;
 use Mockery\Mock;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Signes\vBApi\TestCase;
 
@@ -98,7 +99,9 @@ class GuzzleProviderTest extends TestCase
         $requestParams = ['param1' => 'value1'];
         $debug = false;
 
-        $exception = Mockery::mock(ClientException::class);
+        /** @var Mock|RequestInterface $requestInterface */
+        $requestInterface = Mockery::mock(RequestInterface::class);
+        $exception = new ClientException('Client Exception', $requestInterface);
 
         /** @var Mock|CLient $clientMock */
         $clientMock = Mockery::mock(Client::class);
