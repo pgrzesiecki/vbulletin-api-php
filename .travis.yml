@@ -10,4 +10,7 @@ before_script:
   - travis_retry composer install --prefer-source --no-interaction --dev
   - travis_retry composer require guzzlehttp/guzzle:^6.2.0
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 script: phpunit
