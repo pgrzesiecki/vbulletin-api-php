@@ -158,7 +158,7 @@ class ApiTest extends TestCase
     }
 
     /**
-     * @covers ::testAddApiAuthInfoToParams
+     * @covers ::addApiAuthInfoToParams
      */
     public function testAddApiAuthInfoToParamsWithVersion()
     {
