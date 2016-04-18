@@ -181,13 +181,13 @@ class Api
      */
     private function filterApiParams(array $params)
     {
-        return array_filter(
-            $params,
-            function ($key) {
-                return !in_array($key, ['api_v']);
-            },
-            ARRAY_FILTER_USE_KEY
-        );
+        foreach ($params as $key => $value) {
+            if (in_array($key, ['api_v'])) {
+                unset($params[$key]);
+            }
+        }
+
+        return $params;
     }
 
     /**
