@@ -151,6 +151,38 @@ class ApiTest extends TestCase
     }
 
     /**
+     * @covers ::getApiSignatureForParams
+     * @covers ::filterApiParams
+     * @dataProvider dataApiVersionParamShouldNotChangeSignature
+     * @param string $accessToken
+     * @param string $clientId
+     * @param string $secret
+     * @param string $apiKey
+     * @param array $params
+     * @param string $expected
+     */
+    public function testApiVersionParamShouldNotChangeSignature(
+        $accessToken,
+        $clientId,
+        $secret,
+        $apiKey,
+        array $params,
+        $expected
+    ) {
+        $connector = $this->getConnectorMock();
+        $configuration = $this->getConfigurationMock();
+        $configuration->shouldReceive('getAccessToken')->andReturn($accessToken)->once();
+        $configuration->shouldReceive('getClientId')->andReturn($clientId)->once();
+        $configuration->shouldReceive('getSecret')->andReturn($secret)->once();
+        $configuration->shouldReceive('getApiKey')->andReturn($apiKey)->once();
+
+        $api = new Api($configuration, $connector);
+        $result = $this->callPrivateMethod($api, 'getApiSignatureForParams', $params);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * @covers ::addApiAuthInfoToParams
      * @dataProvider dataApiAuthParams
      * @param string $accessToken
@@ -444,8 +476,41 @@ class ApiTest extends TestCase
                 'accessToken',
                 'clientId',
                 'secret',
+                'apiKey1',
+                ['param1' => 'value1', 'param2' => 'value2'],
+                '205ad96a33a39ee8665119d07430accb',
+            ],
+            [
+                'accessToken',
+                'clientId',
+                'secret',
                 'apiKey',
                 ['param' => 'value1', 'param2' => 'value2'],
+                '5b5a5f94f9bf18c54ad3cd858d19ee6f',
+            ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function dataApiVersionParamShouldNotChangeSignature()
+    {
+        return [
+            [
+                'accessToken',
+                'clientId',
+                'secret',
+                'apiKey',
+                ['param' => 'value1', 'param2' => 'value2'],
+                '5b5a5f94f9bf18c54ad3cd858d19ee6f',
+            ],
+            [
+                'accessToken',
+                'clientId',
+                'secret',
+                'apiKey',
+                ['param' => 'value1', 'param2' => 'value2', 'api_v' => PHP_INT_MAX],
                 '5b5a5f94f9bf18c54ad3cd858d19ee6f',
             ],
         ];

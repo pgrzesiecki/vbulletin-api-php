@@ -4,6 +4,7 @@ namespace Signes\vBApi;
 
 use Exception;
 use Signes\vBApi\Connector\ConnectorInterface;
+use Signes\vBApi\Context\Context;
 use Signes\vBApi\Exception\VBApiException;
 
 /**
@@ -124,6 +125,17 @@ class Api
     }
 
     /**
+     * @param Context $context
+     * @return mixed
+     */
+    public function callContextRequest(Context $context)
+    {
+        return $context->parseResponse(
+            $this->callRequest($context->getApiMethod(), $context->getRequestParams(), $context->getRequestMethod())
+        );
+    }
+
+    /**
      * Initialize connection with vBulletin API.
      * Send 'init' request and save access parameters from response.
      */
@@ -150,6 +162,7 @@ class Api
      */
     private function getApiSignatureForParams(array $params)
     {
+        $params = $this->filterApiParams($params);
         ksort($params);
         $sign = http_build_query($params, '', '&');
         $sign .= $this->config->getAccessToken();
@@ -158,6 +171,23 @@ class Api
         $sign .= $this->config->getApiKey();
 
         return md5($sign);
+    }
+
+    /**
+     * Filter request params from attributes which should not be used to calculate API sign.
+     *
+     * @param array $params
+     * @return mixed
+     */
+    private function filterApiParams(array $params)
+    {
+        return array_filter(
+            $params,
+            function ($key) {
+                return !in_array($key, ['api_v']);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
     }
 
     /**
