@@ -13,7 +13,7 @@ use Signes\vBApi\Context\Context;
 class FetchCurrentUserInfo extends Context
 {
     /**
-     * @return mixed
+     * @return string
      */
     public function getApiMethod()
     {
@@ -21,7 +21,7 @@ class FetchCurrentUserInfo extends Context
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRequestMethod()
     {

@@ -29,7 +29,7 @@ final class FetchByEmail extends Context
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApiMethod()
     {
@@ -37,7 +37,7 @@ final class FetchByEmail extends Context
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRequestMethod()
     {

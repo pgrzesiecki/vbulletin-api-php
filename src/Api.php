@@ -92,7 +92,7 @@ class Api
      * @param $apiMethod
      * @param array $params
      * @param string $requestMethod
-     * @return mixed
+     * @return array
      * @throws VBApiException
      */
     public function callRequest($apiMethod, array $params, $requestMethod = ConnectorInterface::METHOD_POST)

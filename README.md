@@ -18,7 +18,7 @@
 
 This package gives you possibility to easy integrate your system with vBulletin 5 API using simple methods calls.
 
-**NOTE. This package is still in alpha version. I do not suggest to use it on production until stable version release.**
+Tested with vB **5.2**
 
 ## Basic usage
 
@@ -68,7 +68,7 @@ This package gives you possibility to easy integrate your system with vBulletin 
     $api = new Api($apiConfig, $apiConnector);
     ```
         
-4. When API service is initialized, you can call any API request.
+4. When API service is initialized, you can call any API resource.
     
     ```php
     $response = $api->callRequest('user.fetchByEmail', ['email' => 'test@example.com']);
@@ -110,6 +110,7 @@ For your custom context you can also overwrite `parseResponse` method to return 
 ### Available contexts
 
 * User
+    * Register
     * Login
     * Fetch current logged in user data
     * Fetch user data by email

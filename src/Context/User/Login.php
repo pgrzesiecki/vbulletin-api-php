@@ -34,7 +34,7 @@ final class Login extends Context
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApiMethod()
     {
@@ -42,7 +42,7 @@ final class Login extends Context
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRequestMethod()
     {
